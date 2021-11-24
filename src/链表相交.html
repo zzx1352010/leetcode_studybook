@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let headA = {
+        val: 1,
+        next: {
+            val: 2,
+            next: {
+                val: 3,
+                next: {
+                    val: 4,
+                    next: null
+                }
+            }
+        }
+    }
+    let headB = {
+        val: 3,
+        next: {
+            val: 8,
+            next: {
+                val: 3,
+                next: {
+                    val: 4,
+                    next: null
+                }
+            }
+        }
+    }
+    function getIntersectionNode(headA, headB) {
+        let pA = reverseList(headA)
+        console.log(pA);
+        let pB = reverseList(headB)
+        console.log(pB);
+        let tempA
+        let tempB
+        let zizhen = null
+        while (pA) {
+            tempA = pA.next
+            tempB = pB.next
+            pA.next = null
+            pB.next = null
+            if (pA == pB) {
+                zizhen = pA
+            } else {
+                pA = tempA
+                pB = tempB
+            }
+        }
+        return zizhen
+    };
+    function reverseList(head) {
+        let [pre, cur] = [null, head]
+        let temp;
+        while (cur) {
+            temp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = temp
+        }
+        return pre
+    };
+    getIntersectionNode(headA, headB)
+    console.log(getIntersectionNode(headA, headB));
+</script>
+
+</html>

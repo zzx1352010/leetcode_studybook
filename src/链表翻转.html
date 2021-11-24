@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var reverseList = function (head) {
+        // 定义pre指向头部的null
+        // cur指向head
+        let [pre, cur] = [null, head];
+        let temp;
+        while (cur) {
+            // 将cur.next保存下
+
+            temp = cur.next;
+            console.log('22temp', temp);
+            // 改变cur的指向
+
+            cur.next = pre;
+            console.log('25cur.next', cur.next);
+            // 两指针右移
+
+            pre = cur;
+            console.log('28pre', pre);
+            cur = temp;
+            console.log('cur', cur);
+        }
+        // 到最后，cur指向null，返回pre
+        return pre;
+    };
+    let head = {
+        val: 1,
+        next: {
+            val: 2,
+            next: {
+                val: 3,
+                next: {
+                    val: 4,
+                    next: null
+                }
+            }
+        }
+    }
+    let arr = reverseList(head)
+    console.log(arr);
+</script>
+
+</html>
