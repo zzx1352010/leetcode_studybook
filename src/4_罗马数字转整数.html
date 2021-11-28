@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 地址 https://leetcode-cn.com/problems/roman-to-integer/
+    // 13. 罗马数字转整数
+    // I  --->  1
+    // II --->  2
+    // III  --->  3
+    // IV  --->  4 
+    // V  --->  5
+    // 这道题其实是一个找规律的题  第i个字符和第i+1字符比较   i<i+1 时候i这时候就是负值
+    var romanToInt = function (s) {
+        const symbolValues = new Map();
+        symbolValues.set('I', 1);
+        symbolValues.set('V', 5);
+        symbolValues.set('X', 10);
+        symbolValues.set('L', 50);
+        symbolValues.set('C', 100);
+        symbolValues.set('D', 500);
+        symbolValues.set('M', 1000);
+        let ans = 0;
+        const n = s.length;
+        for (let i = 0; i < n; ++i) {
+            const value = symbolValues.get(s[i]);
+            if (i < n - 1 && value < symbolValues.get(s[i + 1])) {
+                ans -= value;
+            } else {
+                ans += value;
+            }
+        }
+        return ans;
+    };
+    console.log(romanToInt('IX'));
+    console.log(romanToInt('LVIII'));
+    console.log(romanToInt('MCMXCIV'));
+
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var root = {
+        val: 3,
+        left: {
+            val: 6,
+            left: null,
+            right: null
+        },
+        right: {
+            val: 7,
+            left: null,
+            right: null
+        }
+    }
+    var isBalance2 = true;
+    var isBalance = function (root) {
+        if(!root) return
+        let left =  counNode(root.left)
+        let right =  counNode(root.right)
+        
+        if(Math.abs(left-right)>1){
+            isBalance2 = false
+        }
+        
+        isBalanced2(root.left)
+        isBalanced2(root.right)
+        return isBalance2
+    };
+    var counNode = (root) => {
+        if (root == null) return 0
+        let left = counNode(root.left)
+        let right = counNode(root.right)
+
+        return 1 + Math.max(left, right)
+    }
+
+
+    console.log(isBalance(root));
+</script>
+
+</html>

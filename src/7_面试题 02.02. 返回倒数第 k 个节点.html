@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+</body>
+<script>
+    let head = {
+        val: 1,
+        next: {
+            val: 2,
+            next: {
+                val: 3,
+                next: {
+                    val: 4,
+                    next: null
+                }
+            }
+        }
+    }
+    let k = 4
+    var kthToLast = function (head, k) {
+        var arr = reversePrint(head)
+        console.log(arr);
+        var a
+        for (i = 1; i <= k; i++) {
+            a = arr.val
+            arr = arr.next
+        }
+        return a
+    };
+
+    var reversePrint = function (head) {
+        let cur = head
+        let pre = null
+        let temp
+        while (cur) {
+            temp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = temp
+        }
+        return pre
+    };
+    console.log(kthToLast(head,k));
+</script>
+
+</html>
