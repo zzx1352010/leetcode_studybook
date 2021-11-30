@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var root = {
+        val: 3,
+        left: {
+            val: 6,
+            left: null,
+            right: null
+        },
+        right: {
+            val: 7,
+            left: null,
+            right: null
+        }
+    }
+    var hasCycle = function (head) {
+        let q = head
+        let p = head
+        while (p && p.next) {
+            q = q.next
+            p = p.next.next
+            if (q === p) {
+                return true
+            }
+        }
+        return false
+    };
+
+
+    console.log(hasCycle(root));
+</script>
+
+</html>
